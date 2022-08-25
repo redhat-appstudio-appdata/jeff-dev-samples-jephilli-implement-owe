@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: jeff-go
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: jeff-go
+    app.kubernetes.io/part-of: jeff-dev-samples
+  name: jeff-go
+  namespace: jephilli
+spec:
+  port:
+    targetPort: 8081
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: jeff-go
+    weight: 100
+status: {}
